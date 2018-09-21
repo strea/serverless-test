@@ -15,24 +15,20 @@ import os.path
 def current_milli_time(): return int(round(time.time() * 1000))	
 
 def lambda_handler(event, context):
-	#BUCKET_NAME = ADE runtime file load bucket
 	file_export_bucket = os.environ['BUCKET_NAME']
 
 	logger = logging.getLogger()
 	logger.setLevel(logging.INFO)
 	
 	timestamp = current_milli_time()
-	#TABLE_NAME = table which will be used in ADE. This will also be added to file name
 	table_name_variable = os.environ['TABLE_NAME']
 	
 	try:
-		#URL: REST API URL to be used
 		data = json.loads(requests.get(os.environ['URL']).text)
 	except:
 		logger.error("ERROR: Virhe haettaessa RESTin tietoja")
 		
 	try:
-		#file name according to ADE specification
 		file_name = f'table.{table_name_variable}.{timestamp}.batch.{timestamp}.fullscanned.true.json'
 		file_load_key = f'{table_name_variable}/{file_name}'
 	
