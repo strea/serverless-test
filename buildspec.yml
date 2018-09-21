@@ -11,3 +11,9 @@ phases:
       #test
       - mkdir artifacts
       - serverless package --package artifacts/stg --stage stg -v
+      
+artifacts:
+  files:
+    - artifacts/**/*
+    - serverless.yml
+    - deploy.sh
