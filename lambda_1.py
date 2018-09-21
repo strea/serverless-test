@@ -11,7 +11,6 @@ import time
 import zipfile
 import sys
 import os.path
-import pandas as pd
 
 def current_milli_time(): return int(round(time.time() * 1000))	
 
