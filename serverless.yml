@@ -12,9 +12,9 @@ provider:
       Action:
         - "s3:ListBucket"
         - "s3:PutObject"
+        - "s3:GetObject"
       Resource: "arn:aws:s3:::henrihe-test-file-sync-bucket"
 
-#test
 functions:
   function1:
     handler: json_move_template.lambda_handler
