@@ -11,16 +11,8 @@ provider:
     - Effect: "Allow"
       Action:
         - "s3:ListBucket"
-      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "henrihe-test-file-sync-bucket" } ] ]  }
-    - Effect: "Allow"
-      Action:
         - "s3:PutObject"
-      Resource:
-        Fn::Join:
-          - ""
-          - - "arn:aws:s3:::"
-            - "Ref" : "henrihe-test-file-sync-bucket"
-            - "/*"
+      Resource: "arn:aws:s3:::henrihe-test-file-sync-bucket"
 
 functions:
   function1:
