@@ -21,10 +21,10 @@ functions:
     environment:
         TABLE_NAME: test
         URL: https://rata.digitraffic.fi/api/v1/train-tracking?version=65403053026
-        BUCKET_NAME: henrihe-test-file-sync-bucket 
+        BUCKET_NAME: ${ssm:testBucket}
   function2:
     handler: lambda_1.lambda_handler
     environment:
         TABLE_NAME: test1
         URL: https://rata.digitraffic.fi/api/v1/trains/latest/1
-        BUCKET_NAME: henrihe-test-file-sync-bucket 
+        BUCKET_NAME: ${ssm:testBucket}
