@@ -1,11 +1,9 @@
-version: 0.1
+version: 0.2    
 phases:
   install:
     commands:
+      - npm install
       - npm install -g serverless
   build:
     commands:
-      – cd nj2jp/serverless && npm install
-  post_build:
-    commands:
-      – serverless deploy
+      - serverless deploy
