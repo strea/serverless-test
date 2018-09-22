@@ -6,7 +6,7 @@ phases:
       - npm install -g serverless
   build:
     commands:
-      - serverless deploy --verbose
+      - serverless deploy --verbose --stage $env
       
       #test
       - mkdir artifacts
