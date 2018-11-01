@@ -13,7 +13,7 @@ provider:
         - "s3:ListBucket"
         - "s3:PutObject"
         - "s3:GetObject"
-      Resource: "arn:aws:s3:::henrihe-${opt:stage}-file-sync-bucket/*"
+      Resource: "arn:aws:s3:::henrihe-test-file-sync-bucket/*"
 
 functions:
   function1:
