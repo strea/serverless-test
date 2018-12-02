@@ -1,19 +1,10 @@
-version: 0.2    
+version: 0.1
 phases:
   install:
     commands:
-      - npm install
-      - npm install -g serverless
-  build:
-    commands:
-      - serverless deploy --verbose --stage dev
-      
-      #test
-      - mkdir artifacts
-      - serverless package --package artifacts/stg --stage stg -v
-      
+      - aws cloudformation package --template-file samTemplate.yaml --s3-bucket pdomala-lambda-pipeline --output-template-file outputSamTemplate.yaml
 artifacts:
+  type: zip
   files:
-    - artifacts/**/*
-    - serverless.yml
-    - deploy.sh
+    - samTemplate.yaml
+    - outputSamTemplate.yaml
