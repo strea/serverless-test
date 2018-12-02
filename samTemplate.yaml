@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: CD Demo Lambda
+Resources:
+  CDDemoLambda:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: json_move_template.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./LambdaCode
+      Description: 'Lambda function for CD Demo'
+      MemorySize: 128
+      Timeout: 30
+#      Role: 'arn:aws:iam::093833860903:role/MyLambdaRole'
+      Environment:
+        Variables:
+          #REGION: ap-southeast-2
+          TABLE_NAME: test1
+          URL: https://rata.digitraffic.fi/api/v1/trains/latest/1
+          BUCKET_NAME: henrihe-test-file-sync-bucket 
