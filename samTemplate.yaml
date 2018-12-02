@@ -16,4 +16,19 @@ Resources:
         Variables:
           TABLE_NAME: test1
           URL: https://rata.digitraffic.fi/api/v1/trains/latest/1
+          BUCKET_NAME: henrihe-test-file-sync-bucket
+  Function2Test:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: json_move_template.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./LambdaCode
+      Description: 'Lambda function for testing purposes'
+      MemorySize: 128
+      Timeout: 30
+      Role: 'arn:aws:iam::502729793426:role/LambdaRoleName'
+      Environment:
+        Variables:
+          TABLE_NAME: test2
+          URL: https://rata.digitraffic.fi/api/v1/metadata/stations
           BUCKET_NAME: henrihe-test-file-sync-bucket 
