@@ -32,3 +32,20 @@ Resources:
           TABLE_NAME: test2
           URL: https://rata.digitraffic.fi/api/v1/metadata/stations
           BUCKET_NAME: henrihe-test-file-sync-bucket 
+  PandasTest:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: test.lambda_handler
+      Runtime: python3.7
+      CodeUri: ./LambdaCode
+      Layers:
+        - 'arn:aws:lambda:eu-west-1:502729793426:layer:pandasLayerHenri:1'
+      Description: 'Lambda function for pandas testing'
+      MemorySize: 1024
+      Timeout: 30
+      Role: 'arn:aws:iam::502729793426:role/LambdaRoleName'
+      Environment:
+        Variables:
+          TABLE_NAME: raideosuudet
+          URL: https://rata.digitraffic.fi/infra-api/0.3/raideosuudet.json?srsName=crs:84&time=2018-11-12T00%3A00%3A00Z%2F2018-11-12T00%3A00%3A00Z
+          BUCKET_NAME: henrihe-test-file-sync-bucket 
